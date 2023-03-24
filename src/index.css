@@ -1,13 +1,132 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.outer{
+  height: 100vh;
+  width: 100vw;
+  z-index: 1;
+  position: fixed;
+  background-color: rgb(62, 62, 62, 0.56);
+  /* border: solid red 1px; */
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.container{
+
+  
+  z-index: auto;
+}
+
+.budget-heading{
+  margin-right: auto;
+  padding-left: 3rem;
+  font-size: 3rem;
+  /* border: solid black 1px; */
+}
+
+.stack{
+  display: flex;
+  margin-bottom: 4rem;
+  flex-grow: 1;
+  max-width: 70%-90%;
+  justify-content: center;
+  /* border: solid black 1px; */
+}
+
+.add-budget-button{
+  border-radius: 5px;
+  height: 2.5rem;
+  min-width: 50%;
+  margin-top: 1.5rem;
+  background-color: rgb(209, 209, 243);
+}
+.add-expense-button{
+  border-radius: 5px;
+  height: 2.5rem;
+  min-width: 50%;
+  margin-top: 1.5rem;
+}
+
+.budget-expense-button{
+  display: flex;
+  /* flex-wrap: column; */
+  padding-top: 1rem;
+  gap : 1rem;
+  min-width: 30%;
+  padding-right: 3rem;
+  /* border: solid black 1px; */
+}
+
+.card-grid{
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-rows: auto;
+  gap: 1rem;
+  align-items: flex-start;
+
+}
+
+.budget-card{
+  /* display: flex; */
+  height: 80%;
+  z-index: auto;
+  border-radius : 5px;
+  border: solid black 1px;
+}
+
+.budget-card:hover{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-title{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-weight: normal;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  /* border: solid black 1px; */
+}
+
+.title-name-card{
+  margin-right: 2rem;
+  padding-left: 2rem;
+}
+
+.amount-max-card{
+  display: flex;
+  align-items: baseline;
+  padding-right: 2rem;
+  
+}
+
+.progress-bar{
+  display: flex;
+  animation: progress 1500ms ease-in 1;
+  /* border: solid black 1px; */
+}
+
+.card-addexpense{
+  margin-left: auto;
+  margin-top: 10px;
+  border-radius: 5px;
+  height: 2.5rem;
+  min-width: 25%;
+  background-color: rgb(209, 209, 243);
+}
+
+.card-viewexpense{
+  border-radius: 5px;
+  height: 2.5rem;
+  margin-top: 10px;
+  min-width: 25%;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

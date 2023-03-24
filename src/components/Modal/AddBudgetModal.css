@@ -1,0 +1,46 @@
+.modal-add-budget{
+    z-index: 2;
+    /* background-color: aqua; */
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 1rem;
+    height:340px;
+    width: auto;
+    max-width: 600px;
+    background-color: white;
+    border: solid black 1px;
+  }
+  
+  .modal-header-add-budget{
+    display: flex;
+    margin: 20px
+  }
+  
+  .modal-title-add-budget{
+    font-size: 2rem;
+    margin-right: auto;
+  }
+  
+  .modal-body-add-budget{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    /* border: solid black 1px; */
+  }
+  
+  .modal-submit-add-budget{
+    position: fixed;
+    margin-top : 5px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    height: 40px;
+    width: 100px;
+  }
+  
+  .modal-outer{
+    /* background-color: black; */
+    height: 100vh;
+    width: 100%;
+    z-index: 1;
+    border: solid black 1px;
+  }
