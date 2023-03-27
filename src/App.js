@@ -3,7 +3,8 @@ import BudgetCard from './components/BudgetCard.js';
 import AddBudgteModal from './components/Modal/AddBudgteModal.js';
 import AddExpenseModal from './components/Modal/AddExpenseModal.js';
 import ViewExpenseModal from './components/Modal/ViewExpenseModal.js';
-import { useState } from 'react';
+
+import { useState, React } from 'react';
 import { useBudgets } from './Context/BudgetContext.js';
 function App() {
 
@@ -12,6 +13,8 @@ function App() {
   const [viewExpense, setViewExpense] = useState(false);
   const [budgetID, setBudgetId] = useState(0);
   const {budgets, getBudgetExpenses} = useBudgets();
+
+
   
   return ( 
     <div className='root'>
@@ -47,25 +50,25 @@ function App() {
           filteredAmount.forEach(element => {
             amount += parseInt(element.amount);
           });
-
           return (
-          
-            <BudgetCard 
-              id = {parseInt(budget.id)}
-              name = {budget.name}
-              amount = {amount}
-              max = {budget.max}
-              clickExpense = {clickExpense}
-              setClickExpense = {setClickExpense}
-              viewExpense = {viewExpense}
-              setViewExpense = {setViewExpense}
-              setBudgetId = {setBudgetId}
-            />
-          
-        )}
+
+                <BudgetCard 
+                  id = {parseInt(budget.id)}
+                  name = {budget.name}
+                  amount = {amount}
+                  max = {budget.max}
+                  clickExpense = {clickExpense}
+                  setClickExpense = {setClickExpense}
+                  viewExpense = {viewExpense}
+                  setViewExpense = {setViewExpense}
+                  setBudgetId = {setBudgetId}
+                />
+
+          )}
         )}
         </div>
       </div>
+      
       
     </div>
   );

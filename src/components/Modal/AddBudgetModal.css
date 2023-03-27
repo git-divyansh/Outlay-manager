@@ -1,6 +1,5 @@
 .modal-add-budget{
     z-index: 2;
-    /* background-color: aqua; */
     border-radius: 10px;
     margin: auto;
     margin-top: 1rem;
@@ -18,14 +17,26 @@
   
   .modal-title-add-budget{
     font-size: 2rem;
+    margin-left: 180px;
     margin-right: auto;
+    --c:linear-gradient(#000 0 0);
+    padding-bottom: .15em;
+    background: var(--c), var(--c);
+    background-size: .3em .1em;
+    background-position:50% 100%;
+    background-repeat: no-repeat;
+    transition: .3s linear, background-size .3s .2s linear;
+  }
+
+  .modal-title-add-budget:hover{
+    background-size: 40% .1em;
+    background-position: 10% 100%, 90% 100%;
   }
   
   .modal-body-add-budget{
     display: flex;
     flex-direction: column;
     margin-left: 20px;
-    /* border: solid black 1px; */
   }
   
   .modal-submit-add-budget{
@@ -38,9 +49,17 @@
   }
   
   .modal-outer{
-    /* background-color: black; */
     height: 100vh;
     width: 100%;
     z-index: 1;
     border: solid black 1px;
+  }
+
+  .TfiClose-budget{
+    color: rgb(151, 145, 145);
+    font-size : 1.5rem;
+  }
+
+  .TfiClose-budget:hover{
+    color: black;
   }

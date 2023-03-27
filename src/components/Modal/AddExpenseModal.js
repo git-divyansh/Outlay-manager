@@ -3,11 +3,12 @@ import { useState } from "react";
 import { useBudgets } from "../../Context/BudgetContext";
 import DropdownAddExpense from "../Dropdown/DropdownAddExpense.js";
 import "./AddExpenseModal.css";
+import randomColor from "randomcolor";
 
 
 export default function AddExpenseModal({show, setShow, id}) {
 
-    const {addExpense} = useBudgets();
+    const {addExpense, getBudgetExpenses, budgets} = useBudgets();
 
     const [descriptionText, setDescriptionText] = useState('');
     const [amountText, setAmountText] = useState('');
@@ -16,9 +17,25 @@ export default function AddExpenseModal({show, setShow, id}) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        var totalAmount = 0;
+        const filteredAmount = getBudgetExpenses(budgetID);
+        filteredAmount.forEach(element => {
+            totalAmount += parseInt(element.amount);
+        });
+
+        console.log(totalAmount);
+
         const description = descriptionText;
         const amount = amountText;
-        addExpense(description, amount, budgetID);
+        const color = randomColor();
+        const obj = budgets.filter(ob => ob.id === id);
+
+        console.log(parseInt(totalAmount) + parseInt(amount))
+
+        if(parseInt(totalAmount) + parseInt(amount) > obj[0].max)
+            alert("Max limit exceeded");
+        else
+            addExpense(description, amount, budgetID, color);
 
         setShow(!show);
     }
@@ -27,7 +44,7 @@ export default function AddExpenseModal({show, setShow, id}) {
     <div className="modal-add-expense" style={{ height: "400px" }}>
         <div className="modal-header-add-expense">
             <div className="modal-title-add-expense">Add Expense</div>
-            <TfiClose style= {{fontSize : "1.5rem"}} onClick={() => setShow(!show)}/>
+            <TfiClose className="TfiClose-expense" onClick={() => setShow(!show)}/>
         </div>
         <form onSubmit={(e) => handleSubmit(e)}>
             <div className="modal-body-add-expense" style={{fontSize : "1.5rem"}}>

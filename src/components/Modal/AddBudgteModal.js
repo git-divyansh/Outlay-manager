@@ -24,7 +24,7 @@ export default function AddBudgteModal({show, setShow}) {
     <div className="modal-add-budget">
         <div className="modal-header-add-budget">
             <div className="modal-title-add-budget">Add Budget</div>
-            <TfiClose style= {{fontSize : "1.5rem"}} onClick={() => setShow(!show)}/>
+            <TfiClose className="TfiClose-budget" onClick={() => setShow(!show)}/>
         </div>
         <form onSubmit={(e) => handleSubmit(e)}>
             <div className="modal-body-add-budget" style={{fontSize : "1.5rem"}}>

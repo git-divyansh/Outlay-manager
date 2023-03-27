@@ -1,8 +1,11 @@
 import { currencyFormatter } from "../Utils.js";
 import { useEffect } from "react";
 import Progress_bar from './Progress_bar.js';
+import { useState } from "react";
 
 function BudgetCard({id, name, amount, max, clickExpense, setClickExpense, viewExpense, setViewExpense, setBudgetId}) {
+
+  const [prec, setPrec] = useState((amount / max)*100);
 
   const handleViewClick = ()=> {
     setViewExpense(!viewExpense);
@@ -14,20 +17,19 @@ function BudgetCard({id, name, amount, max, clickExpense, setClickExpense, viewE
     setBudgetId(id);
   }
 
-  function handleProgress(amount, max){
-    const prec = (amount / max)*100;
-    return prec.toFixed(2);
-  }
+  useEffect(()=>{
+    const precentage = (amount / max)*100;
+    setPrec(precentage);
+  }, [amount])
 
   function handleProgressColor(amount, max){
 
-    const color = "#ADD8E6";
-    const precentage = handleProgress(amount, max);
+    const color = "#CF9FFF";
 
-    if(precentage >= 60 && precentage < 90){
-      return "orange";
+    if(prec >= 60 && prec < 90){
+      return "#9C3764";
     }
-    else if(precentage >= 90){
+    else if(prec >= 90 && prec <= 100){
       return "red";
     }
     return color;
@@ -51,7 +53,7 @@ function BudgetCard({id, name, amount, max, clickExpense, setClickExpense, viewE
           </div>
         </div>
         <div className='progress-bar'>
-        <Progress_bar bgcolor = {handleProgressColor(amount, max)} progress = {handleProgress(amount, max)} height = {30} />
+        <Progress_bar bgcolor = {handleProgressColor(amount, max)} progress = {prec.toFixed(2)} height = {37} />
         </div>
         <div className='stack'>
           <input

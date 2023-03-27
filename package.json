@@ -12,12 +12,14 @@
     "distinct-colors": "^3.0.0",
     "randomcolor": "^0.6.2",
     "react": "^18.2.0",
+    "react-animated-3d-card": "^1.0.2",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-dropdown": "^1.11.0",
     "react-icons": "^4.7.1",
     "react-modal": "^3.16.1",
     "react-scripts": "5.0.1",
+    "react-tinder-card": "^1.6.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

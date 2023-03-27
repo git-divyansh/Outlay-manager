@@ -4,7 +4,6 @@
   z-index: 1;
   position: fixed;
   background-color: rgb(62, 62, 62, 0.56);
-  /* border: solid red 1px; */
   top: 0px;
   left: 0px;
   right: 0px;
@@ -12,16 +11,17 @@
 }
 
 .container{
-
-  
   z-index: auto;
+}
+
+.hover:container{
+  transform: scale(1.5);
 }
 
 .budget-heading{
   margin-right: auto;
   padding-left: 3rem;
   font-size: 3rem;
-  /* border: solid black 1px; */
 }
 
 .stack{
@@ -68,63 +68,103 @@
 }
 
 .budget-card{
-  /* display: flex; */
-  height: 80%;
+  height: 240px;
   z-index: auto;
-  border-radius : 5px;
+  border-radius : 10px;
   border: solid black 1px;
+  
 }
 
 .budget-card:hover{
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: box-shadow 0.5s ease-in-out;
 }
 
 .card-title{
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  font-weight: normal;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-  /* border: solid black 1px; */
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;  
 }
+
 
 .title-name-card{
   margin-right: 2rem;
-  padding-left: 2rem;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 150%;
+  --c:linear-gradient(#000 0 0);
+  padding-bottom: .30em;
+  background: var(--c), var(--c);
+  background-size: .3em 0em;
+  background-position:50% 100%;
+  background-repeat: no-repeat;
+  transition: .3s linear, background-size .3s .2s linear;
+  cursor: default;
+}
+
+.title-name-card:hover{
+  background-size: 40% .09em;
+    background-position: 10% 100%, 90% 100%;
 }
 
 .amount-max-card{
   display: flex;
   align-items: baseline;
   padding-right: 2rem;
-  
+  cursor: default;
 }
 
 .progress-bar{
   display: flex;
+  margin-left: 10px;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
   animation: progress 1500ms ease-in 1;
-  /* border: solid black 1px; */
+  cursor: default;
 }
 
 .card-addexpense{
   margin-left: auto;
   margin-top: 10px;
   border-radius: 5px;
-  height: 2.5rem;
-  min-width: 25%;
+  height: 3rem;
+  min-width: 30%;
   background-color: rgb(209, 209, 243);
+}
+
+.card-addexpense:hover{
+  transform: translate3d(0,-5px,0);
+  background-color: rgba(114, 114, 114, 0.817);
+  transition: background-color ease-in-out 0.1s;
+  transition: transform 0.5s cubic-bezier(0.585, 2.5, 0.645, 0.55);
+}
+
+.card-addexpense:hover span{
+  transform: translate3d(0,-10px,0);
 }
 
 .card-viewexpense{
   border-radius: 5px;
-  height: 2.5rem;
   margin-top: 10px;
-  min-width: 25%;
+  height: 3rem;
+  min-width: 30%;
   margin-left: 10px;
-  margin-right: 10px;
+  margin-right: 2rem;
 }
 
+.card-viewexpense:hover{
+  transform: translate3d(0,-5px,0);
+  background-color: rgba(114, 114, 114, 0.817);
+  transition: background-color ease-in-out 0.1s;
+  transition: transform 0.5s cubic-bezier(0.585, 2.5, 0.645, 0.55);
+}
+
+.card-viewexpense:hover span{
+  transform: translate3d(0,-10px,0);
+}
+  
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;

@@ -24,28 +24,75 @@
     justify-content: flex-start;
 }
 
+/*----------------------------------------------------*/
+
+.wrapper{
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.label{
+    display: flex;
+    margin : 5px;
+    width: 20rem;
+    background-color: #E6E4E4;
+    border-radius: 5px;
+}
+
+.label:hover{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.label-name{
+    margin : 5px;
+    width : 90%;
+    font-size: 20px;
+    cursor: default;
+}
+
+.class-palatte{
+    height: 30px;
+    width: 30px;
+    margin: 5px;
+}
+
+.add-sign{
+    height: 30px;
+    width: 20%x;
+    font-size: 15px;
+    margin-left: 20px;
+    margin-right: 10px;
+    margin-top: 10px;
+    cursor: default;
+}
+
+.outer-label{
+    display: flex;
+    flex-direction: column;
+}
+
 .input-field{
-    margin-left: 32px;
     width: 9.5rem;
     height: 2rem;
     padding-left: 10px;
 }
 
 .button-field{
-    margin-left : 6rem;
-    margin-top : 2rem;
-    width: 6rem;
-    height: 2rem;
-}
-
-.OR-class{
-    margin-top: 2rem;
-    margin-left: 8rem;
+    margin-left: 5px;
+    width: 4.5rem;
+    height: 2.3rem;  
 }
 
 .submit-change{
-
     margin-left: 5px;
     width: 4.5rem;
     height: 2.3rem;    
+}
+
+.flex-box{
+    margin: 5px;
+    display: flex;
+    /* border : solid black 1px */
 }

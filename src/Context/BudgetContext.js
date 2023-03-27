@@ -17,7 +17,7 @@ const BudgetsProvider = ({ children }) => {
         return filtered;
     }
 
-    const addExpense =(description, amount, budgetId) =>{
+    const addExpense =(description, amount, budgetId, color) =>{
 
         if(expenses.find(expense => expense.description === description)){
             const newExpense = expenses.map(ex =>{
@@ -33,7 +33,7 @@ const BudgetsProvider = ({ children }) => {
         }
 
         const id = expenses.length ? expenses[expenses.length-1].id + 1: 0;
-        const newExpense = [...expenses, {id, description, amount, budgetId}];
+        const newExpense = [...expenses, {id, description, amount, budgetId, color}];
         setExpense(newExpense);
     }
 

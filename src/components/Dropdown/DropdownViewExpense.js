@@ -3,78 +3,101 @@ import { useBudgets } from "../../Context/BudgetContext";
 import "./DropdownViewExpense.css"
 
 
-const DropdownViewExpense = ({key, budgetID}) => {
+const DropdownViewExpense = ({key, budgetID, color}) => {
 
     const {expenses, setExpense, getBudgetExpenses, deleteExpenses} = useBudgets();
     const newExpense = getBudgetExpenses(parseInt(budgetID));
     const [value, setValue] = useState("");
-    const [ID, setId] = useState(0);
-    const [show, setShow] = useState(false);
+    const [selectedID, setSelectedId] = useState(null);
 
     const handleClick = (id)=>{
-        console.log(id)
-        setId(id)
-        setShow(true);
+        if(selectedID !== null){
+            setSelectedId(null);
+            return;
+        }
+        
+        setSelectedId(id)
     }
 
-    // console.log(expenses);
     const handleChange = (e) => {
         e.preventDefault();
         const newExpense = expenses.map( ex =>{
 
             const id = ex.budgetID;
-            if(parseInt(ex.id) === parseInt(ID)){
+            if(parseInt(ex.id) === parseInt(selectedID)){
                 return {...ex, amount : value };
             }
             
             return ex;
         });
 
-        console.log(newExpense)
+        if(selectedID !== null){
+            setSelectedId(null);
+        }
 
         setExpense(newExpense);
     }
 
-    const handleRemove = (e)=> {
+    var index = 0;
+
+    const handleDelete = (e)=> {
 
         e.preventDefault();
-        deleteExpenses(ID);
+
+        if(selectedID !== null){
+            setSelectedId(null);
+        }
+
+        deleteExpenses(selectedID);
     }
 
     return (
     <>
         <div style = {{ marginLeft : "40px" }}>
-            <select className="dropdown-box-view" placeholder="Select Budget" onChange={(e) => handleClick(e.target.value)}>
-                <option className="dropdown-items-view">--Select Expense--</option>
-                {newExpense.map((expense) => {
-                    
-                    return(
-                        <option className="dropdown-items-view" value = {expense.id}>{expense.description} </option>
-                    )
-                })}
-            </select>
-            {show && <>
-                <div>
-                    <form onSubmit={(e) => handleChange(e)}>
-                        <input 
-                            className="input-field" 
-                            type = "number" 
-                            onChange={(e)=>setValue(e.target.value)}
-                            placeholder="Change expense"
-                        />
-                        <button className="submit-change">Change</button>
-                    </form>
+            <div className="wrapper">
+                <div className="accordian">
+                    {
+                        newExpense.map(ex =>{
+                            return(
+                                <div className="outer-label">
+                                    <div className="label" onClick={() => handleClick(ex.id)}>
+                                        <div className="label-name">{ex.description}</div>
+                                        <div 
+                                            className="class-palatte"
+                                            style = {{ backgroundColor : color[index++]}}
+                                        />
+                                        <span className="add-sign"> {selectedID === ex.id ? "-" : "+"} </span>
+                                    </div>
+                                    {   selectedID === ex.id ? 
+                                        (<div className="flex-box">
+                                            <div>
+                                                <form onSubmit={(e) => handleChange(e)}>
+                                                    <input 
+                                                        className="input-field" 
+                                                        type = "number" 
+                                                        onChange={(e)=>setValue(e.target.value)}
+                                                        placeholder="Change expense"
+                                                    />
+                                                    <button className="submit-change">Change</button>
+                                                </form>
+                                            </div>
+                                            <div>
+                                                <input 
+                                                    className="button-field" 
+                                                    type="button"
+                                                    onClick={(e) => handleDelete(e)} 
+                                                    value="Delete"
+                                                />
+                                            </div>
+                                        </div>) : <div></div>
+                                    }
+                                </div>
+                        )})
+                    }
                 </div>
-                <div className="OR-class">OR</div>
-                <div>
-                    <input 
-                        className="button-field" 
-                        type="button"
-                        onClick={(e) => handleRemove(e)} 
-                        value="Remove"
-                    />
-                </div>
-            </>}
+
+            </div>
+            
         </div>    
     </>
 )

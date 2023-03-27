@@ -1,4 +1,4 @@
-import React, { useTransition } from 'react'
+import React from 'react'
   
 const Progress_bar = ({bgcolor,progress,height}) => {
      
@@ -14,7 +14,8 @@ const Progress_bar = ({bgcolor,progress,height}) => {
         height: '100%',
         width: `${progress >= 100 ? 100 : progress}%`,
         backgroundColor: bgcolor,
-        textAlign: 'right'
+        textAlign: 'right',
+        transition: 'width 1s ease-in-out'
       }
       
       const progresstext = {
@@ -26,7 +27,7 @@ const Progress_bar = ({bgcolor,progress,height}) => {
         
     return (
     <div style={Parentdiv}>
-      <div style={Childdiv}>
+      <div className='childdiv' style={Childdiv}>
         <span style={progresstext}>{`${progress}%`}</span>
       </div>
     </div>

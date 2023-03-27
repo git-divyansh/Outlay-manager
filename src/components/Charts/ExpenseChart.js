@@ -1,33 +1,27 @@
 import {Chart as ChartJS, ArcElement, Tooltip, Legend} from "chart.js";
 import randomColor from "randomcolor";
+import { useState } from "react";
 import { Doughnut } from "react-chartjs-2";
 import { useBudgets } from "../../Context/BudgetContext";
-import distinctColors from 'distinct-colors'
 import "./ExpenseChart.css"
+
 ChartJS.register(
   ArcElement,
   Tooltip,
   Legend
 )
-const ExpenseChart = ({label, amount}) => {
+const ExpenseChart = ({label, amount, color, budgetID}) => {
 
-  const color = [];
   const {budgets} = useBudgets();
 
-  console.log(amount.length)
+  var checkEmpty = false;
   
-
-  if(amount.length !== 0){
-  amount.forEach(a=>{
-  const r = Math.floor(Math.random() * 200);
-  const g = Math.floor(Math.random() * 200);
-  const b = Math.floor(Math.random() * 200);
-  const c = 'rgb(' + r + ', ' + g + ', ' + b + ')';
-  color.push(c);
-  })
+  if(color.length === 0){
+    checkEmpty = true;
+    label.push("No Expense");
+    amount.push(parseFloat(budgets[budgetID].max));
+    color.push(randomColor());
   }
-  
-  // setColor(color);
 
   const data = {
     labels : label,
@@ -35,17 +29,29 @@ const ExpenseChart = ({label, amount}) => {
       label : 'poll',
       data : amount,
       backgroundColor : color,
-      borderColor : color
+      borderColor : color,
+      hoverOffset : 7,
+      radius : "90%"
     }]
   }
 
+  const options = {
+    plugins: {
+      legend : {
+        display : checkEmpty,
+        position : "bottom",
+        
+      }
+    }
+  }
 
   return (
-    <div className="chart">
+    <div 
+      className="chart">
       <Doughnut
         data = {data}
+        options = {options}
       />
-      
     </div>
   )
 }
