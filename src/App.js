@@ -3,7 +3,7 @@ import BudgetCard from './components/BudgetCard.js';
 import AddBudgteModal from './components/Modal/AddBudgteModal.js';
 import AddExpenseModal from './components/Modal/AddExpenseModal.js';
 import ViewExpenseModal from './components/Modal/ViewExpenseModal.js';
-
+import TitleExepenseManager from './TitleExpenseManager.js';
 import { useState, React } from 'react';
 import { useBudgets } from './Context/BudgetContext.js';
 function App() {
@@ -13,8 +13,6 @@ function App() {
   const [viewExpense, setViewExpense] = useState(false);
   const [budgetID, setBudgetId] = useState(0);
   const {budgets, getBudgetExpenses} = useBudgets();
-
-
   
   return ( 
     <div className='root'>
@@ -34,13 +32,15 @@ function App() {
 
       <div className="container">
         <div className='stack'>
-          <h1 className='budget-heading'>Budget</h1>
-          <div className='budget-expense-button'>
-            
-            <button id ="addBudget" className='add-budget-button' onClick={() => setShowAddBudget(!showAddBudget)}>Add Budget</button>
-            <button className='add-expense-button' onClick= {() => setClickExpense(!clickExpense)}>Add Expense</button>
-            
-          </div>
+          <div className='header'>
+              <h1 className='budget-heading'>
+                <TitleExepenseManager/>
+              </h1>
+              <div className='budget-expense-button'>
+                <button id ="addBudget" className='add-budget-button' onClick={() => setShowAddBudget(!showAddBudget)}>Add Budget</button>
+                <button className='add-expense-button' onClick= {() => setClickExpense(!clickExpense)}>Add Expense</button>
+              </div>
+          </div> 
         </div>  
         <div className='card-grid'>
         {budgets.map(budget =>{
@@ -63,13 +63,10 @@ function App() {
                   setViewExpense = {setViewExpense}
                   setBudgetId = {setBudgetId}
                 />
-
           )}
         )}
         </div>
-      </div>
-      
-      
+      </div> 
     </div>
   );
 }
